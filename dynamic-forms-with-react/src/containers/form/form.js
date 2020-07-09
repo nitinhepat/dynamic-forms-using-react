@@ -16,6 +16,7 @@ class Form extends Component {
                 required: true
             },
             valid: false, 
+            errorMessage: 'Enter Valid data',
             touched: false
         },
            {
@@ -31,6 +32,7 @@ class Form extends Component {
                 required: true
             },
             valid: false,
+            errorMessage: 'Enter Valid data',
             touched: false
         },
          {
@@ -48,6 +50,7 @@ class Form extends Component {
                 maxLength: 5,
             },
             valid: false,
+            errorMessage: 'Enter Valid data',
             touched: false
         },
         {
@@ -63,6 +66,7 @@ class Form extends Component {
                 required: true
             },
             valid: false,
+            errorMessage: 'Enter Valid data',
             touched: false
         },
          {
@@ -79,9 +83,11 @@ class Form extends Component {
                 isEmail: true
             },
             valid: false,
+            errorMessage: 'Enter Valid data',
             touched: false
         },
-    ]
+    ],
+    formValid: false
  }
 
  fieldChange = (event,field,index) => {
@@ -91,8 +97,15 @@ class Form extends Component {
      
      const updatedFields =  [...this.state.fields];
      updatedFields.splice(index,1,updatedField  );
+     let formValid = true;
+     for(let field of updatedFields){
+        if(!field.valid){
+           formValid = false;
+        }
+    }
      this.setState({
-         fields: updatedFields
+         fields: updatedFields,
+         formValid: formValid
      })
 
 
@@ -140,15 +153,21 @@ class Form extends Component {
      updatedField.valid = this.checkValidity(updatedField);
      const updatedFields =  [...this.state.fields];
      updatedFields.splice(index,1,updatedField);
+     
+   
      this.setState({
-         fields: updatedFields
+         fields: updatedFields,
      })
 
 
  }
+ onSubmit = (event) =>{
+    event.preventDefault();
+    alert('data submitted')
+ }
 
     render(){
-       return (<form>
+       return (<form onSubmit={(event)=>this.onSubmit(event)}>
             {this.state.fields.map((field,index)=>{
                 return <Field 
                  key={field.id}
@@ -156,6 +175,7 @@ class Form extends Component {
                  focused={(event)=>this.fieldBlur(event,field,index)} 
                  changed={(event)=>this.fieldChange(event,field,index)} />
             })}
+            <button type='submit' disabled={!this.state.formValid}>Submit</button>
         </form>)
 
     }

@@ -4,8 +4,10 @@ const field = (props) => {
     const fieldConfig = props.fieldConfig;
     let element = null;
     let classes = [];
+    let errorMessage = null;
     if (fieldConfig.touched && !fieldConfig.valid) {
-        classes.push('invalid')
+        classes.push('invalid');
+
     }
  console.log('rendered');
 
@@ -34,11 +36,9 @@ const field = (props) => {
     }
 
     return (
-        <div>
+        <div >
             <label>{fieldConfig.label}</label>
-            <div>
-                {element}
-            </div>
+              <span>  {element} </span>
         </div>
     )
 
