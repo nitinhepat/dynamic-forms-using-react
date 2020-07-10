@@ -2,7 +2,41 @@
   text-align: center;
 }
 
-.invalid {
+.field.invalid {
   border: 1px solid red;
   background-color: #FDA49A;
+}
+
+.field {
+   outline: none;
+    border: 1px solid #ccc;
+    background-color: white;
+    font: inherit;
+    padding: 6px 10px;
+    display: block;
+    width: 100%;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.field-wrapper {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+
+.form-wrapper {
+  margin: 20px auto;
+  width: 80%;
+  text-align: center;
+  box-shadow: 0 2px 3px #ccc;
+  border: 1px solid #eee;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+@media (min-width: 600px) {
+  .form-wrapper {
+      width: 500px;
+  }
 }

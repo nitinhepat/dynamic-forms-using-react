@@ -5,8 +5,11 @@ import Form from './containers/form/form';
 
 function App() {
   return (
-    <div className="App">
-    <Form />
+    <div className="form-wrapper">
+      <div>
+        <strong> ENTER USER DETAILS</strong>
+      </div>
+      <Form />
     </div>
   );
 }

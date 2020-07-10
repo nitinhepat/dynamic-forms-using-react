@@ -3,7 +3,7 @@ import React from 'react';
 const field = (props) => {
     const fieldConfig = props.fieldConfig;
     let element = null;
-    let classes = [];
+    let classes = ['field'];
     let errorMessage = null;
     if (fieldConfig.touched && !fieldConfig.valid) {
         classes.push('invalid');
@@ -20,7 +20,7 @@ const field = (props) => {
                 name={fieldConfig.id}
                 value={fieldConfig.value}
                 className={classes.join(' ')}
-                placeholder={fieldConfig.placeholder}
+                placeholder={fieldConfig.label}
                 required={fieldConfig.validation.required}
                 onBlur={props.focused}
                 minLength={fieldConfig.validation.minLength}
@@ -36,9 +36,8 @@ const field = (props) => {
     }
 
     return (
-        <div >
-            <label>{fieldConfig.label}</label>
-              <span>  {element} </span>
+        <div className="field-wrapper">
+           {element}
         </div>
     )
 
