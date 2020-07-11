@@ -6,7 +6,7 @@ class Form extends Component {
          {
             id: 'name',
             type: 'input',
-            label: 'Enter name',
+            placeholder: 'Enter name',
             config: {
                 dataType: 'text',
                 placeholder: 'Your Name'
@@ -21,8 +21,8 @@ class Form extends Component {
         },
            {
             id: 'street',
-            type: 'input',
-            label: 'Enter street',
+            type: 'textarea',
+            placeholder: 'Enter Address',
             config: {
                 dataType: 'text',
                 placeholder: 'Street'
@@ -38,7 +38,7 @@ class Form extends Component {
          {
             id: 'zipCode',
             type: 'input',
-            label: 'Enter zipcode',
+            placeholder: 'Enter zipcode',
             config: {
                 dataType: 'text',
                 placeholder: 'ZIP Code'
@@ -55,12 +55,26 @@ class Form extends Component {
         },
         {
             id: 'country',
-            type: 'input',
-            label: 'Enter country',
+            type: 'select',
+            placeholder: 'Enter country',
             config: {
                 dataType: 'text',
                 placeholder: 'Country'
             },
+            options: [
+                {
+                    value: 'USA',
+                    displayValue: 'United state of america'
+                },
+                {
+                    value: 'UK',
+                    displayValue: 'United kingdom'
+                },
+                {
+                    value: 'IN',
+                    displayValue: 'India'
+                }
+            ],
             value: '',
             validation: {
                 required: true
@@ -72,7 +86,7 @@ class Form extends Component {
          {
             id: 'email',
             type: 'input',
-            label: 'Enter email',
+            placeholder: 'Enter email',
             config: {
                 dataType: 'email',
                 placeholder: 'Your E-Mail'

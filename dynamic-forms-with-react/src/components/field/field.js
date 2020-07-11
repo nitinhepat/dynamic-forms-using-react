@@ -20,7 +20,7 @@ const field = (props) => {
                 name={fieldConfig.id}
                 value={fieldConfig.value}
                 className={classes.join(' ')}
-                placeholder={fieldConfig.label}
+                placeholder={fieldConfig.placeholder}
                 required={fieldConfig.validation.required}
                 onBlur={props.focused}
                 minLength={fieldConfig.validation.minLength}
@@ -28,10 +28,36 @@ const field = (props) => {
                 maxLength={fieldConfig.validation.maxLength}
             />);
             break;
-        case 'select':
-            break;
-        case 'checkbox':
-            break;
+            case ( 'textarea' ):
+                element = <textarea
+                value={fieldConfig.value}
+                className={classes.join(' ')}
+                placeholder={fieldConfig.placeholder}
+                required={fieldConfig.validation.required}
+                onBlur={props.focused}
+                minLength={fieldConfig.validation.minLength}
+                onChange={props.changed}
+                maxLength={fieldConfig.validation.maxLength}   
+                />;
+                break;
+            case ( 'select' ):
+                element = (
+                    <select
+                    value={fieldConfig.value}
+                    className={classes.join(' ')}
+                    required={fieldConfig.validation.required}
+                    onBlur={props.focused}
+                    onChange={props.changed}>
+                        <option>{fieldConfig.placeholder}</option>
+                        {fieldConfig.options.map(option => (
+                            <option key={option.value} value={option.value}>
+                                {option.displayValue}
+                            </option>
+                        ))}
+                    </select>
+                );
+                break;
+           
 
     }
 
